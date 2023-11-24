@@ -1,0 +1,26 @@
+body{
+    background-image: url(gray\ aura.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    background-size: cover;
+    position: relative;
+  }
+.Kanban-container{
+   display: flex;
+   padding: 120px 0px;
+   gap: 16px;
+   justify-content: center;
+}
+#To-do-card{
+    width: 220px;
+}
+#In-progress-card{
+    width: 220px;
+}
+#Stuck-card{
+    width: 204px;
+}
+#Done-card{
+    width: 204px;
+}
