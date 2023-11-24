@@ -2,7 +2,7 @@ body{
     background-image: url(gray\ aura.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    height: 500px;
+    height: 100vh;
     background-size: cover;
     position: relative;
   }
@@ -13,14 +13,241 @@ body{
    justify-content: center;
 }
 #To-do-card{
-    width: 220px;
+    width: 294px;
+    background-color: #ebecf0;
+    border-radius: 8px;
+    padding: 8px;
+    height: min-content;
 }
+
 #In-progress-card{
-    width: 220px;
+    width: 294px;
+    background-color: #ebecf0;
+    border-radius: 8px;
+    padding: 8px;
+    height: min-content;
+    
 }
 #Stuck-card{
-    width: 204px;
+    width: 294px;
+    background-color: #ebecf0;
+    border-radius: 8px;
+    padding: 8px;
+    height: min-content;
 }
 #Done-card{
-    width: 204px;
+    width: 294px;
+    background-color: #ebecf0;
+    border-radius: 8px;
+    padding: 8px;
+    height: min-content;
+}
+span{
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    color: rgba(0, 0, 0, 0.5);;
+    font-size: 16px;
+}
+h3{
+    padding: 8px;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Roboto", sans-serif;
+}
+.fa-plus:before {
+    content: "\2b";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    -webkit-font-smoothing: antialiased;
+    display: var(--fa-display,inline-block);
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+    padding: 8px;
+}
+#Add-to-do-card{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+#Add-to-do-card:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#Add-in-progress-card{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+#Add-in-progress-card:hover{
+        background-color: rgba(0, 0, 0, 0.1);
+}
+#Add-Stuck-card{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+#Add-Stuck-card:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#Add-done-card:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+#Add-done-card{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+} 
+#Add-done-card:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.card{
+    display: flex;
+    background-color: white;
+    border-radius: 4px;
+    padding: 8px;
+    cursor: grab;
+    gap: 12px;
+}
+.done{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    
+}
+.check-button:before {
+    content: "\f00c";
+}
+#check-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-rendering: auto;
+}
+.Details{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    width: 206px;
+    flex: 1;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.Details p{
+    margin: 0;
+}
+h4{
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    font-size: 16px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;;
+}
+.priority{
+    font-size: 12px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 0;
+    width: fit-content;
+    padding: 4px;
+}
+.actions{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.Add-task-pop-up{
+    background-color: white;
+    width: 400px;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: fit-content
+}
+.Add-task-pop-up input{
+    width: 384px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    position: absolute;
+
+
+}
+.Add-task-pop-up span{
+    width: 384px;
+}
+#Title-input-title  {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#Description-input-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#Status-input-title {
+    width: 100%     ;
+    display: flex;
+    flex-direction: column;
+}
+#Add-Task-Priority{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#Backdrop{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }
