@@ -37,28 +37,23 @@
               <div class="done" onclick=""></div>
             </div>
           </div>
-          <div id="Add-to-do-card">
-            <i class="fa-solid fa-plus"></i>Add card
-          </div>
+          <div class="Add-task"><i class="fa-solid fa-plus"></i>Add task</div>
         </div>
         <div id="In-progress-card">
           <h3>In progress <span>0</span></h3>
-          <div id="Add-in-progress-card">
-            <i class="fa-solid fa-plus"></i>Add card
-          </div>
+          <div class="Add-task"><i class="fa-solid fa-plus"></i>Add task</div>
         </div>
         <div id="Stuck-card">
           <h3>Stuck <span>0</span></h3>
-          <div id="Add-Stuck-card">
-            <i class="fa-solid fa-plus"></i>Add card
-          </div>
+          <div class="Add-task"><i class="fa-solid fa-plus"></i>Add task</div>
         </div>
         <div id="Done-card">
           <h3>Done <span>0</span></h3>
-          <div id="Add-done-card"><i class="fa-solid fa-plus"></i>Add card</div>
+          <div class="Add-task"><i class="fa-solid fa-plus"></i>Add task</div>
         </div>
       </div>
       <div id="Backdrop">
+        <div id="Backdrop-dotorh"></div>
         <div class="Add-task-pop-up">
           <form action="">
             <h1>Add Task</h1>
@@ -79,19 +74,19 @@
                 <option value="Done">Done</option>
               </select>
             </div>
-            <div id="Add-task-Priority">
+            <div id="Add-task-Priority-title">
               Priority
-              <select name="Priority" id="Add-Task-Priority">
+              <select name="Priority" id="Add-Task-Priority-input">
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
               </select>
             </div>
-            <div></div>
+            <div id="Adding-task-button">Add task</div>
           </form>
         </div>
       </div>
     </div>
-    <script type="module"></script>
+    <script src="TodoPinecone.js"></script>
   </body>
 </html>
