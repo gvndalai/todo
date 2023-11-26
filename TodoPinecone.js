@@ -16,8 +16,31 @@ function BackdropHiding() {
 backDropDotorh.addEventListener("click", BackdropHiding)
 
 // Appending task
-const addingTaskButton = document.getElementById("Adding-task-button")
-const appendingCard = document.getElementsByClassName("card")
-function cardAppending (){
+const addingTaskButtonRef = document.getElementById("Adding-task-button");
+const toDoTasks = [];
+document.getElementById("To-do-tasks").innerHTML = toDoTasks;
+const inProgressTasks = [];
+document.getElementById("In-progress-card").innerHTML = inProgressTasks;
+const stuckTasks = [];
+document.getElementById("Stuck-tasks").innerHTML = stuckTasks;
+const doneTasks = [];
+document.getElementById("Done-tasks").innerHTML = doneTasks;
+
+function getStatusOption() {
+    let selectElement = document.getElementById("Status-select");
+    let output = selectElement.value;
     
+    if (output === "Todo") {
+        toDoTasks.push(Array.from(document.getElementById("card")));
+    } else if (output === "In-progress") {
+        inProgressTasks.push(Array.from(document.getElementById("card")));
+    } else if (output === "Stuck") {
+        stuckTasks.push(Array.from(document.getElementById("card")));
+    } else if (output === "Done") {
+        doneTasks.push(Array.from(document.getElementById("card")));
+    }
 }
+
+addingTaskButtonRef.addEventListener("click", getStatusOption);
+
+
