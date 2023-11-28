@@ -284,3 +284,12 @@ h4{
     padding: 4px;
     border-radius: 4px;
 }
+#task-item{
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+ul{
+    padding: 4px;
+    margin: 0;
+}
