@@ -91,7 +91,7 @@ h3{
     cursor: grab;
     gap: 12px;
 }
-#done-button{
+#remove-button{
     border: 1px solid rgba(0, 0, 0, 0.3);
     width: 24px;
     height: 24px;
@@ -102,7 +102,7 @@ h3{
     cursor: pointer;
     
 }
-#done-button:hover{
+#remove-button:hover{
     background-color: rgba(0, 0, 0, 0.1);
 }
 #edit-button{
@@ -288,8 +288,22 @@ h4{
     list-style: none;
     display: flex;
     margin: 0;
+    gap: 5px;
+    margin-top: 5px ;
+    background-color: whitesmoke;
+    padding: 6px;
+    border-radius: 4px;
 }
 ul{
     padding: 4px;
     margin: 0;
+}
+#New-task-description{
+    font-size: 12px;
+}
+#title-alert{
+    color: red;
+}
+#description-alert{
+    color: red;
 }

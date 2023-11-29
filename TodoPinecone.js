@@ -31,6 +31,22 @@ function addingTask() {
     // NEW TASK OBJECT
     const newTaskItem = { title: newTaskTitle, description: newTaskDescription, status: statusValue, priority: newTaskPriority };
 
+    if(newTaskTitleInput.value === ''){
+        document.getElementById("New-task-title-input").style.borderColor = "red" ;
+        const fillFieldTitle = document.createElement("div")
+        fillFieldTitle.setAttribute("id","title-alert");
+        fillFieldTitle.textContent = "Please type a title";
+        document.getElementById("New-task-title").appendChild(fillField)
+
+    }
+    if (newTaskDescriptionInput.value === ''){
+        document.getElementById("New-task-description-input").style.borderColor = "red";
+        const fillFieldDescription = document.createElement("div")
+        fillFieldDescription.setAttribute("id","description-alert");
+        fillFieldDescription.textContent = "Please type a description";
+        document.getElementById("New-task-title").appendChild(fillFieldDescription)
+    }
+
     if (newTaskTitle !== '' && newTaskDescription !== '') {
         tasks.push(newTaskItem);
     }
@@ -47,7 +63,6 @@ function addingTask() {
         taskItem.appendChild(checkButtonRef);
 
         const taskList = document.getElementById('task-list');
-
 
         const details = document.createElement('div');
         details.setAttribute('class', 'Details');
@@ -75,10 +90,10 @@ function addingTask() {
         removeButtonRef.setAttribute('id', 'remove-button');
         removeButtonRef.innerHTML =
             '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>';
-        function removeItem() {
-            taskList.removeChild(taskItem); 
+        removeButtonRef.onclick = function () {
+            taskList.removeChild(taskItem);
         };
-`
+
         actions.appendChild(removeButtonRef);
 
         // Edit button
@@ -92,22 +107,31 @@ function addingTask() {
         if (newTaskItem.status === "Todo") {
             const toDoTasks = document.getElementById("To-do-tasks");
             toDoTasks.appendChild(taskItem);
+            document.getElementById("To-do-card").querySelector("span").innerText = + 1;
+
         } else if (newTaskItem.status === "In-progress") {
             const inProgressTasks = document.getElementById("In-progress-tasks");
             inProgressTasks.appendChild(taskItem);
+            document.getElementById("In-progress-card").querySelector("span").innerText = + 1;
         } else if (newTaskItem.status === "Stuck") {
             const stuckTasks = document.getElementById("Stuck-tasks");
             stuckTasks.appendChild(taskItem);
+            document.getElementById("Stuck-card").querySelector("span").innerText = + 1;
         } else if (newTaskItem.status === "Done") {
             const doneTasks = document.getElementById("Done-tasks");
             doneTasks.appendChild(taskItem);
+            document.getElementById("Done-card").querySelector("span").innerText = + 1;
         }
     });
+    backDrop.style.display = 'none';
+    newTaskTitleInput.value = '';
+    newTaskDescriptionInput.value = '';
+    newTaskPriorityInput.value = '';
+    selectedStatus.value = '';
+
 }
 
 addTaskButtonRef.addEventListener("click", addingTask);
-
-
 
 
 
