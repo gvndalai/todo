@@ -13,10 +13,10 @@ function BackdropHiding() {
     backDrop.style.display = 'none';
 }
 // number of tasks
-let todoTasksNumber = 0;
-let inProgressTasksNumber = 0;
-let stuckTasksNumber = 0;
-let doneTasksNumber = 0;
+let todoTasksNumber = document.getElementById("To-do-tasks").children.length;
+let inProgressTasksNumber = document.getElementById("In-progress-tasks").children.length;
+let stuckTasksNumber = document.getElementById("Stuck-tasks").children.length;
+let doneTasksNumber = document.getElementById("Done-tasks").children.length;
 
 backDropDotorh.addEventListener("click", BackdropHiding)
 // Adding task
@@ -107,40 +107,36 @@ function addingTask() {
             newTaskTitleInput.value = '';
             newTaskDescriptionInput.value = '';
             backDrop.style.display = 'none';
-            todoTasksNumber++;
-            updateTaskCount("To-do-card", todoTasksNumber);
+            document.getElementById("To-do-card").querySelector("h3").querySelector("span").innerHTML = todoTasksNumber
         } else if (newTaskItem.status === "In-progress") {
             const inProgressTasks = document.getElementById("In-progress-tasks");
             inProgressTasks.appendChild(taskItem);
             newTaskTitleInput.value = '';
             newTaskDescriptionInput.value = '';
             backDrop.style.display = 'none';
-            inProgressTasksNumber++;
-            updateTaskCount("In-progress", inProgressTasksNumber);
+            document.getElementById("In-progress-card").querySelector("h3").querySelector("span").innerHTML = inProgressTasksNumber
         } else if (newTaskItem.status === "Stuck") {
             const stuckTasks = document.getElementById("Stuck-tasks");
             stuckTasks.appendChild(taskItem);
             newTaskTitleInput.value = '';
             newTaskDescriptionInput.value = '';
             backDrop.style.display = 'none';
-            stuckTasksNumber++;
-            updateTaskCount("Stuck-card", stuckTasksNumber);
+            document.getElementById("Stuck-card").querySelector("h3").querySelector("span").innerHTML = stuckTasksNumber
         } else if (newTaskItem.status === "Done") {
             const doneTasks = document.getElementById("Done-tasks");
             doneTasks.appendChild(taskItem);
             newTaskTitleInput.value = '';
             newTaskDescriptionInput.value = '';
             backDrop.style.display = 'none';
-            doneTasksNumber++;
-            updateTaskCount("Done-card", doneTasksNumber);
+            document.getElementById("Done-card").querySelector("h3").querySelector("span").innerHTML = doneTasksNumber
         }
     }
-    function updateTaskCount(cardId, count) {
-        const countElement = document.getElementById(cardId).querySelector("h3").querySelector("span");
-        if (countElement) {
-            countElement.textContent = count;
-        }
-    }
+    // function updateTaskCount(cardId, count) {
+    //     const countElement = document.getElementById(cardId).querySelector("h3").querySelector("span");
+    //     if (countElement) {
+    //         countElement.textContent = count;
+    //     }
+    // }
     // Validation for empty fields
     if (newTaskTitle === '' || newTaskDescription === '') {
         if (newTaskTitle === '') {
@@ -185,29 +181,45 @@ function addingTask() {
     // Check button click event
     checkButtonRef.onclick = function () {
         console.log("function processing")
-        newTaskItem.status === "Done"
-            const doneTasks = document.getElementById("Done-tasks");
-            doneTasks.appendChild(taskItem);
             newTaskTitleInput.value = '';
             newTaskDescriptionInput.value = '';
             backDrop.style.display = 'none';
+            if (newTaskItem.status === "In-progress") {
+                inProgressTasksNumber--;
+                updateTaskCount("In-progress-card", inProgressTasksNumber);
+                doneTasksNumber++;
+                updateTaskCount("Done-card", doneTasksNumber);
+            } else if (newTaskItem.status === "Done") {
+                doneTasksNumber--;
+                updateTaskCount("Done-card", doneTasksNumber);
+                doneTasksNumber++;
+                updateTaskCount("Done-card", doneTasksNumber);
+            } else if (newTaskItem.status === "Stuck") {
+                stuckTasksNumber--;
+                updateTaskCount("Stuck-card", stuckTasksNumber);
+                doneTasksNumber++;
+                updateTaskCount("Done-card", doneTasksNumber);
+            } else if (newTaskItem.status === "Todo") {
+                todoTasksNumber--;
+                updateTaskCount("To-do-card", todoTasksNumber);
+                doneTasksNumber++;
+                updateTaskCount("Done-card", doneTasksNumber);
+            }  
+            
     
-            // if (taskItem) {
-            //     taskItem.parentNode.removeChild(taskItem);
-            // }
-            // if (newTaskItem.status === "In-progress") {
-            //     inProgressTasksNumber--;
-            //     updateTaskCount("In-progress-card", inProgressTasksNumber);
-            // } else if (newTaskItem.status === "Done") {
-            //     doneTasksNumber--;
-            //     updateTaskCount("Done-card", doneTasksNumber);
-            // } else if (newTaskItem.status === "Stuck") {
-            //     stuckTasksNumber--;
-            //     updateTaskCount("Stuck-card", stuckTasksNumber);
-            // } else if (newTaskItem.status === "Todo") {
-            //     todoTasksNumber--;
-            //     updateTaskCount("To-do-card", todoTasksNumber);
-            // }   
+
+            const doneTasks = document.getElementById("Done-tasks");                                         
+            doneTasks.appendChild(taskItem);
+            // removeButtonRef.addEventListener("click", function () {
+            //     const taskItem = removeButtonRef.closest('#task-item');
+
+            //     if (taskItem) {
+            //         taskItem.parentNode.removeChild(taskItem);
+            //     }
+            //         doneTasksNumber--;
+            //         updateTaskCount("Done-card", doneTasksNumber);
+            
+            // });
     };
 
     // Edit button click event
@@ -228,6 +240,7 @@ function addingTask() {
             taskTitle.innerText = newTaskTitle;
             textNote.innerText = newTaskDescription;
             priority.innerText = newTaskPriority;
+
         }
 
         // Reset the "Add Task" button functionality
