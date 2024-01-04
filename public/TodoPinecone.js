@@ -1,23 +1,43 @@
-// Backdrop popping up
+// Backdrop popping u
 const backDrop = document.getElementById("Backdrop");
 function addTask() {
   backDrop.style.display = "block";
 }
-const addTaskRef = document.getElementsByClassName("Add-task");
-for (const element of addTaskRef) {
-  element.addEventListener("click", addTask);
-}
+
 // Backdrop hiding
 const backDropDotorh = document.getElementById("Backdrop-dotorh");
 function BackdropHiding() {
   backDrop.style.display = "none";
 }
+
 // number of tasks
-let todoTasksNumber = document.getElementById("To-do-tasks").children.length;
-let inProgressTasksNumber =
-  document.getElementById("In-progress-tasks").children.length;
-let stuckTasksNumber = document.getElementById("Stuck-tasks").children.length;
-let doneTasksNumber = document.getElementById("Done-tasks").children.length;
+let todoTasksNumber = 0;
+function toDoNumPlus() {
+  if (todoTasksNumber >= 0) {
+    todoTasksNumber += 1;
+  }
+  return todoTasksNumber;
+}
+
+let inProgressTasksNumber = 0;
+function inProgressNumPlus() {
+  if (inProgressTasksNumber >= 0) {
+    inProgressTasksNumber += 1;
+  }
+  return inProgressTasksNumber;
+}
+
+let stuckTasksNumber = 0;
+function stuckNumPlus() {
+  stuckTasksNumber += 1;
+  return stuckTasksNumber;
+}
+
+let doneTasksNumber = 0;
+function doneNumPlus() {
+  doneTasksNumber += 1;
+  return doneTasksNumber;
+}
 
 backDropDotorh.addEventListener("click", BackdropHiding);
 // Adding task
@@ -119,6 +139,7 @@ function addingTask() {
       newTaskTitleInput.value = "";
       newTaskDescriptionInput.value = "";
       backDrop.style.display = "none";
+      toDoNumPlus();
       document
         .getElementById("To-do-card")
         .querySelector("h3")
@@ -155,12 +176,16 @@ function addingTask() {
         .querySelector("span").innerHTML = doneTasksNumber;
     }
   }
-  // function updateTaskCount(cardId, count) {
-  //     const countElement = document.getElementById(cardId).querySelector("h3").querySelector("span");
-  //     if (countElement) {
-  //         countElement.textContent = count;
-  //     }
-  // }
+  function updateTaskCount(cardId, count) {
+    const countElement = document
+      .getElementById(cardId)
+      .querySelector("h3")
+      .querySelector("span");
+    if (countElement) {
+      countElement.textContent = count;
+    }
+  }
+
   // Validation for empty fields
   if (newTaskTitle === "" || newTaskDescription === "") {
     if (newTaskTitle === "") {
@@ -187,19 +212,21 @@ function addingTask() {
     const taskItem = removeButtonRef.closest("#task-item");
     if (taskItem) {
       taskItem.parentNode.removeChild(taskItem);
-    }
-    if (newTaskItem.status === "In-progress") {
-      inProgressTasksNumber--;
-      updateTaskCount("In-progress-card", inProgressTasksNumber);
-    } else if (newTaskItem.status === "Done") {
-      doneTasksNumber--;
-      updateTaskCount("Done-card", doneTasksNumber);
-    } else if (newTaskItem.status === "Stuck") {
-      stuckTasksNumber--;
-      updateTaskCount("Stuck-card", stuckTasksNumber);
-    } else if (newTaskItem.status === "Todo") {
-      todoTasksNumber--;
-      updateTaskCount("To-do-card", todoTasksNumber);
+
+      // Update task count based on the removed task's status
+      if (newTaskItem.status === "In-progress") {
+        inProgressTasksNumber--;
+        updateTaskCount("In-progress-card", inProgressTasksNumber);
+      } else if (newTaskItem.status === "Done") {
+        doneTasksNumber--;
+        updateTaskCount("Done-card", doneTasksNumber);
+      } else if (newTaskItem.status === "Stuck") {
+        stuckTasksNumber--;
+        updateTaskCount("Stuck-card", stuckTasksNumber);
+      } else if (newTaskItem.status === "Todo") {
+        todoTasksNumber--;
+        updateTaskCount("To-do-card", todoTasksNumber);
+      }
     }
   });
 
@@ -278,3 +305,10 @@ function addingTask() {
 
 // Add event listener for "Add Task" button
 addTaskButtonRef.addEventListener("click", addingTask);
+const parentElement = document.getElementById("parentContainer");
+
+parentElement.addEventListener("click", function (event) {
+  if (event.target.classList.contains("Add-task")) {
+    addTask();
+  }
+});
